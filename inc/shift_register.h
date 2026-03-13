@@ -69,26 +69,16 @@ void Sr_SendByte(const Sr_Handle_t * as_handler, const uint8_t au8_data);
 void Sr_ResetDataArray(const Sr_Handle_t * as_handler);
 void Sr_SendData(const Sr_Handle_t * as_handler, const uint8_t * au8_data, const uint8_t au8_size);
 void Sr_SetOutput(const Sr_Handle_t * as_handler, const uint16_t au16_output, const uint8_t au8_data);
-void Sr_SetPeriod(const Sr_Handle_t * as_handler, const uint16_t au16_output, const bool ab_period);
-void Sr_Set8SegOutput(const Sr_Handle_t * as_handler, const uint16_t au16_output, const uint8_t au8_data);
-void Sr_Set16SegOutput(const Sr_Handle_t * as_handler, const uint16_t au16_output, const uint16_t au16_data);
 void Sr_DoLatch(const Sr_Handle_t * as_handler);
 void Sr_EnableOutputs(const Sr_Handle_t * as_handler);
 void Sr_DisableOutputs(const Sr_Handle_t * as_handler);
 void Sr_UpdateOutputs(const Sr_Handle_t * as_handler);
-void Sr_ChangePwmOutput(const Sr_Handle_t * as_handler, const uint8_t au8_channel, const uint8_t au8_duty, const uint16_t au16_frequency);
-void Sr_SetPwmDuty(const Sr_Handle_t * as_handler, const uint8_t au8_channel, const uint8_t au8_duty);
-uint8_t Sr_GetPwmDuty(const Sr_Handle_t * as_handler, const uint8_t au8_channel);
-uint8_t Sr_ConvertDutyToSldCompatible(const Sr_Handle_t * as_handler, const uint8_t au8_duty);
 
 /* ---------------------------------------------------------------------------- */
 /* Functions implemented by the application */
 /* ---------------------------------------------------------------------------- */
 bool Sr_cbk_InitGpio(const uint8_t au8_pin, const Sr_GpioLevel_t ae_gpioLevel);
-bool Sr_cbk_InitPwm(const uint8_t au8_pwmChannel, const uint16_t au16_pwmFrequency,
-                      const uint8_t au8_pwmDutyCycle);
 bool Sr_cbk_SetGpio(const uint8_t au8_pin, const Sr_GpioLevel_t ae_gpioLevel);
-bool Sr_cbk_SetPwm(const uint8_t au8_channel, const uint8_t au8_dutyCycle, const uint16_t au16_frequency, bool pwm_inverted);
 void Sr_cbk_DelayUs(const uint64_t au64_timeUs);
 
 /* ---------------------------------------------------------------------------- */
