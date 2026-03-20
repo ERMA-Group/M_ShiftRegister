@@ -69,6 +69,7 @@ public:
     
     // Data manipulation
     void setData(const uint8_t* dataArr, const uint16_t size) noexcept;
+    uint8_t getData(const uint16_t output) const noexcept;
     void setBitRangeInDataArray(const uint32_t start_bit, const uint32_t bit_length, const uint32_t data) noexcept;
     void copyBitRange(const uint8_t* src, const uint32_t bit_start, const uint32_t bit_end) noexcept;
     void resetDataArray() noexcept;

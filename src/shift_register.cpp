@@ -126,6 +126,15 @@ void ShiftRegister::setData(const uint8_t* data_arr, const uint16_t size) noexce
     }
 }
 
+uint8_t ShiftRegister::getData(const uint16_t output) const noexcept
+{
+    if (!isInitialized() || output >= _number_of_outputs)
+    {
+        return 0; // Return 0 for invalid output index or uninitialized state
+    }
+    return _output_states[output];
+}
+
 /**
  * @brief Sets a range of bits in the output state array.
  * @param start_bit The starting bit index.
