@@ -129,7 +129,7 @@ public:
     const GpioLevel _kLatchLowLevel{GpioLevel::kLow};
     constexpr static uint8_t kBitsPerByte{8U};
     
-    std::array<uint8_t, kMaxOutputs> _output_states;
+    std::array<uint8_t, kMaxOutputs> _output_states{};
     bool _initGpio{false}; // Flag to indicate if GPIOs should be initialized on SLD init
     
     // Private helper methods

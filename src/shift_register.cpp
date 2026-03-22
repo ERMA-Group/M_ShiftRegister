@@ -83,6 +83,7 @@ bool ShiftRegister::init() noexcept
         Sr_cbk_InitGpio(_clock_pin, Sr_GpioLevel_t::SR_GPIO_LOW);
         Sr_cbk_InitGpio(_latch_pin, Sr_GpioLevel_t::SR_GPIO_LOW);
     }
+    _arrayReset();
     _initialized = true;
     return true;
 }
@@ -98,13 +99,12 @@ bool ShiftRegister::setNumberOfOutputs(const uint16_t in_number_of_outputs) noex
         return false;
     }
     /* set everything to zero before resizing */
-    _arrayReset();
     updateOutputs();
     disableOutputs();
 
     _number_of_outputs = in_number_of_outputs;
     // _output_states.resize(_number_of_outputs);
-    
+    _arrayReset();
     return true;
 }
 
@@ -344,11 +344,6 @@ void ShiftRegister::delayUs(uint64_t time_us) const noexcept
  */
 void ShiftRegister::_arrayReset() noexcept
 {
-    if (!isInitialized())
-    {
-        /* array is not initialized */
-        return;
-    }
     std::fill(_output_states.begin(), _output_states.end(), 0U);
 }
 
